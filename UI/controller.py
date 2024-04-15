@@ -13,30 +13,30 @@ class Controller:
 
     def get_corsi_periodo(self, e):
         if self._pd is None:
-            self._view.create_alert("Selezionare un periodo didattico!")
+            self._view.create_alert("selezionare un periodo didattico")
             return
-
         corsi = self._model.get_corsi_periodo(self._pd)
-        self._view.lst_result.clear()
+        self._view.lst_result.controls.clear()
         for corso in corsi:
             self._view.lst_result.controls.append(ft.Text(corso))
         self._view.update_page()
 
+
     def get_studenti_periodo(self, e):
         if self._pd is None:
-            self._view.create_alert("Selezionare un periodo didattico!")
+            self._view.create_alert("selezionare un periodo didattico")
             return
-        numer_studenti = self._model.get_studenti_periodo(self._pd)
+        numero_studenti = self._model.get_studenti_periodo(self._pd)
         self._view.lst_result.controls.clear()
-        self._view.lst_result.controls.append(ft.Text(f"gli studenti iscritti"))
+        self._view.lst_result.controls.append(ft.Text(f"gli studenti iscritti ai corsi del periodo didattico {self._pd} sono {numero_studenti}"))
         self._view.update_page()
+
 
     def get_studenti_corso(self, e):
         pass
 
-    def get_dettaglio_corso(self, e):
+    def get_dettaglio_corso(self,e):
         pass
 
     def leggi_tendina(self, e):
         self._pd = self._view.dd_periodo.value
-        # stampare il periodo -> print(e.control.value)

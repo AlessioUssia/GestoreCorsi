@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 
-
 @dataclass
 class Corso:
     codins: str
@@ -8,8 +7,9 @@ class Corso:
     nome: str
     pd: int
 
-    # Relazione
-    studenti: list = None
+    #relazione
+    studenti: set = None
+
 
     def __eq__(self, other):
         return self.codins == other.codins
